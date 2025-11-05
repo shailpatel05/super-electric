@@ -3,10 +3,10 @@ import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 import DashboardPage from './pages/DashboardPage';
 import LoginPage from './pages/LoginPage';
 import UserManagementPage from './pages/UserManagementPage';
+import ItemManagementPage from './pages/ItemManagementPage';
+import PurchaseManagementPage from './pages/PurchaseManagementPage';
+import ReportPage from './pages/ReportPage';
 import NotFoundPage from './pages/NotFoundPage';
-import ItemManagement from './components/ItemManagement';
-import PurchaseManagement from './components/PurchaseManagement';
-import ReportModule from './components/ReportModule';
 
 const Routes = () => {
     return (
@@ -15,9 +15,9 @@ const Routes = () => {
                 <Route path="/dashboard" component={DashboardPage} />
                 <Route path="/login" component={LoginPage} />
                 <Route path="/users" component={UserManagementPage} />
-                <Route path="/items" component={ItemManagement} />
-                <Route path="/purchases" component={PurchaseManagement} />
-                <Route path="/reports" component={ReportModule} />
+                <Route path="/items" component={ItemManagementPage} />
+                <Route path="/purchases" component={PurchaseManagementPage} />
+                <Route path="/reports" component={ReportPage} />
                 <Route path="/" exact component={LoginPage} />
                 <Route component={NotFoundPage} />
             </Switch>

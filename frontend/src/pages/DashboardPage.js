@@ -1,7 +1,8 @@
-import React, { useState } from 'react';
-import { Container, Row, Col, Navbar, Nav, Card, Button } from 'react-bootstrap';
+import React from 'react';
+import { Container, Row, Col, Card } from 'react-bootstrap';
 import { Bar, Line, Pie } from 'react-chartjs-2';
 import { Chart as ChartJS, CategoryScale, LinearScale, BarElement, Title, Tooltip, Legend, PointElement, LineElement, ArcElement } from 'chart.js';
+import Layout from '../components/Layout';
 
 ChartJS.register(
   CategoryScale,
@@ -16,9 +17,6 @@ ChartJS.register(
 );
 
 const DashboardPage = () => {
-    const [sidebarOpen, setSidebarOpen] = useState(false);
-
-    const toggleSidebar = () => setSidebarOpen(!sidebarOpen);
 
     const barData = {
         labels: ['January', 'February', 'March', 'April', 'May', 'June'],
@@ -48,31 +46,8 @@ const DashboardPage = () => {
     };
 
     return (
-        <div className="d-flex">
-            {/* Sidebar */}
-            <div className={`bg-dark text-white ${sidebarOpen ? 'd-block' : 'd-none d-md-block'}`} style={{ width: '250px', minHeight: '100vh' }}>
-                <div className="p-3">
-                    <h4>Inventory System</h4>
-                    <Nav className="flex-column">
-                        <Nav.Link href="/dashboard" className="text-white">Dashboard</Nav.Link>
-                        <Nav.Link href="/items" className="text-white">Items</Nav.Link>
-                        <Nav.Link href="/purchases" className="text-white">Purchases</Nav.Link>
-                        <Nav.Link href="/users" className="text-white">Users</Nav.Link>
-                        <Nav.Link href="/reports" className="text-white">Reports</Nav.Link>
-                    </Nav>
-                </div>
-            </div>
-
-            {/* Main Content */}
-            <div className="flex-grow-1">
-                <Navbar bg="primary" variant="dark" expand="lg">
-                    <Button variant="outline-light" onClick={toggleSidebar} className="d-md-none me-2">
-                        ☰
-                    </Button>
-                    <Navbar.Brand href="#home">Dashboard</Navbar.Brand>
-                </Navbar>
-
-                <Container fluid className="p-4">
+        <Layout title="Dashboard">
+            <Container fluid>
                     <Row className="mb-4">
                         <Col md={4}>
                             <Card>
@@ -142,9 +117,8 @@ const DashboardPage = () => {
                             </Card>
                         </Col>
                     </Row>
-                </Container>
-            </div>
-        </div>
+            </Container>
+        </Layout>
     );
 };
 

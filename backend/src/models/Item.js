@@ -3,8 +3,8 @@ const mongoose = require('mongoose');
 const itemSchema = new mongoose.Schema({
     sku: {
         type: String,
-        required: true,
-        unique: true
+        required: false,
+        unique: false
     },
     name: {
         type: String,
@@ -12,21 +12,21 @@ const itemSchema = new mongoose.Schema({
     },
     description: {
         type: String,
-        required: true
+        required: false
     },
     category: {
-        type: mongoose.Schema.Types.ObjectId,
-        ref: 'Category',
-        required: true
+        type: String,
+        required: false
     },
-    stockLevel: {
+    stock: {
         type: Number,
-        required: true,
+        required: false,
         default: 0
     },
     price: {
         type: Number,
-        required: true
+        required: false,
+        default: 0
     },
     createdAt: {
         type: Date,

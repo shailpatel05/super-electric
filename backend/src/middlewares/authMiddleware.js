@@ -61,13 +61,10 @@ const verifyToken = (req, res, next) => {
     }
 };
 
-const isAdmin = roleMiddleware(['admin']);
-
 module.exports = {
     authMiddleware,
     roleMiddleware,
     validateRegister,
     validateLogin,
     verifyToken,
-    isAdmin,
 };

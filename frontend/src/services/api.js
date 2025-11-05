@@ -1,7 +1,7 @@
 import axios from 'axios';
 
 const api = axios.create({
-    baseURL: process.env.REACT_APP_API_URL || 'http://localhost:5005/api',
+    baseURL: 'http://localhost:5005/api',
     headers: {
         'Content-Type': 'application/json',
     },
@@ -61,6 +61,11 @@ export const fetchPurchases = async () => {
 
 export const addPurchase = async (purchaseData) => {
     const response = await api.post('/purchases', purchaseData);
+    return response.data;
+};
+
+export const deletePurchase = async (purchaseId) => {
+    const response = await api.delete(`/purchases/${purchaseId}`);
     return response.data;
 };
 
