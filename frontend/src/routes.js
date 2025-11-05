@@ -12,12 +12,13 @@ const Routes = () => {
     return (
         <Router>
             <Switch>
-                <Route path="/" exact component={DashboardPage} />
+                <Route path="/dashboard" component={DashboardPage} />
                 <Route path="/login" component={LoginPage} />
                 <Route path="/users" component={UserManagementPage} />
                 <Route path="/items" component={ItemManagement} />
                 <Route path="/purchases" component={PurchaseManagement} />
                 <Route path="/reports" component={ReportModule} />
+                <Route path="/" exact component={LoginPage} />
                 <Route component={NotFoundPage} />
             </Switch>
         </Router>

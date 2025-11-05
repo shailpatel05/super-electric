@@ -1,6 +1,6 @@
 import axios from 'axios';
 
-const API_URL = process.env.REACT_APP_API_URL || 'http://localhost:5000/api/auth/';
+const API_URL = process.env.REACT_APP_API_URL || 'http://localhost:5005/api/auth/';
 
 const register = async (userData) => {
     const response = await axios.post(`${API_URL}register`, userData);
@@ -23,6 +23,7 @@ const getCurrentUser = () => {
     return JSON.parse(localStorage.getItem('user'));
 };
 
+// eslint-disable-next-line import/no-anonymous-default-export
 export default {
     register,
     login,

@@ -1,21 +1,21 @@
 import React, { useEffect, useState } from 'react';
-import { getUsers, deleteUser } from '../services/api';
+import { fetchUsers, deleteUser } from '../services/api';
 
 const UserManagement = () => {
     const [users, setUsers] = useState([]);
 
-    useEffect(() => {
-        fetchUsers();
-    }, []);
-
-    const fetchUsers = async () => {
-        const response = await getUsers();
-        setUsers(response.data);
+    const loadUsers = async () => {
+        const response = await fetchUsers();
+        setUsers(response);
     };
+
+    useEffect(() => {
+        loadUsers();
+    }, []);
 
     const handleDelete = async (userId) => {
         await deleteUser(userId);
-        fetchUsers();
+        loadUsers();
     };
 
     return (
