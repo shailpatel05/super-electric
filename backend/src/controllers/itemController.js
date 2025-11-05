@@ -1,7 +1,7 @@
 const Item = require('../models/Item');
 
 // Add a new item
-exports.addItem = async (req, res) => {
+exports.createItem = async (req, res) => {
     try {
         const newItem = new Item(req.body);
         await newItem.save();
@@ -18,6 +18,19 @@ exports.getAllItems = async (req, res) => {
         res.status(200).json(items);
     } catch (error) {
         res.status(500).json({ message: 'Error fetching items', error });
+    }
+};
+
+// Get a single item by ID
+exports.getItemById = async (req, res) => {
+    try {
+        const item = await Item.findById(req.params.id);
+        if (!item) {
+            return res.status(404).json({ message: 'Item not found' });
+        }
+        res.status(200).json(item);
+    } catch (error) {
+        res.status(500).json({ message: 'Error fetching item', error: error.message });
     }
 };
 
